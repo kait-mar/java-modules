@@ -476,16 +476,16 @@ public class Program {
     */
 
     int getAttendanceStatus(String input) {
-        if (input == null)
-            return 0;
+        // if (input == null)
+        //     return 0;
         if (input.equals("HERE"))
             return 1;
         else if (input.equals("NOT_HERE"))
             return 0;
-        else{
-            System.err.println("IllegalArgument");
-            System.exit(-1);
-        }
+        // else{
+        //     System.err.println("IllegalArgument");
+        //     System.exit(-1);
+        // }
 
         return 0;
     }
@@ -493,7 +493,7 @@ public class Program {
     /*
     ***********************************************************************************
     */
-
+// delete
     boolean isInRange(int num, int lowerBound, int upperBound) {
         return (num >= lowerBound && num <= upperBound);
     }
@@ -501,7 +501,7 @@ public class Program {
     /*
     ***********************************************************************************
     */
-
+// delete
     void checkIfTimeExistInSchedule(int[] classSchedule, int time) {
         for (int i = 0; i < classSchedule.length; i++) {
             int T[] = unpackIntegers(classSchedule[i]);
@@ -515,7 +515,7 @@ public class Program {
     /*
     ***********************************************************************************
     */
-
+// delete
     void checkIfDateCorrespondToDayInSchedule(int[] classSchedule, int date) {
 
         for (int i = 0; i < classSchedule.length; i++) {
@@ -530,7 +530,7 @@ public class Program {
     /*
     ***********************************************************************************
     */
-
+// delete
     void parseAttendanceRecords(int[][] attendanceRecords, String[] studentNames, int[] classSchedule,
             String inputStram) {
 
@@ -557,12 +557,12 @@ public class Program {
         int attendanceStatus = getAttendanceStatus(sc.next());
         int timeDatePair = packIntegers(time, date);
 
-        checkIfTimeExistInSchedule(classSchedule, time);
-        checkIfDateCorrespondToDayInSchedule(classSchedule, date);
-        if (!isInRange(date, 1, 31) || studentIndex == -1){
-            System.err.println("IllegalArgument");
-            System.exit(-1);
-        }
+        // checkIfTimeExistInSchedule(classSchedule, time);
+        // checkIfDateCorrespondToDayInSchedule(classSchedule, date);
+        // if (!isInRange(date, 1, 31) || studentIndex == -1){
+        //     System.err.println("IllegalArgument");
+        //     System.exit(-1);
+        // }
 
         sc.close();
 
@@ -572,7 +572,7 @@ public class Program {
     /*
     ***********************************************************************************
     */
-
+// delete
     void getAttendanceRecords(int[][] attendanceRecords, String[] studentNames, int[] classSchedule) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter attendance records");
@@ -581,7 +581,40 @@ public class Program {
             String input = scanner.nextLine();
             if (input.equals("."))
                 break;
-            parseAttendanceRecords(attendanceRecords, studentNames, classSchedule, input);
+        //  Scanner _scanner = new Scanner(input);
+        // _scanner.useDelimiter(" ");
+
+        // int counter = 0;
+        // String regex = "\\S+";
+        // while (_scanner.findInLine(regex) != null)
+        //     counter++;
+
+        // _scanner.close();
+
+        // if (counter != 4)
+        // System.err.println("IllegalArgument");
+        // System.exit(-1);
+
+        Scanner sc = new Scanner(input);
+        sc.useDelimiter(" ");
+
+        int studentIndex = getStudentIndex(students, sc.next());
+        int time = isDigit(sc.next());
+        int date = isDigit(sc.next());
+        int attendanceStatus = getAttendanceStatus(sc.next());
+        int timeDatePair = packIntegers(time, date);
+
+        // checkIfTimeExistInSchedule(classSchedule, time);
+        // checkIfDateCorrespondToDayInSchedule(classSchedule, date);
+        // if (!isInRange(date, 1, 31) || studentIndex == -1){
+        //     System.err.println("IllegalArgument");
+        //     System.exit(-1);
+        // }
+
+        sc.close();
+
+        attendanceRecords[studentIndex][timeDatePair] = attendanceStatus;
+            // parseAttendanceRecords(attendanceRecords, studentNames, classSchedule, input);
         }
         scanner.close(); // close the scanner, we don't need it anymore
     }
@@ -680,7 +713,18 @@ public class Program {
 
     void displayRecords(String[] studentNames, int[][] attendanceRecords, int[] classSchedule) {
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter attendance records");
+
+        while (true) {
+            String input = scanner.nextLine();
+            if (input.equals("."))
+                break;
+            parseAttendanceRecords(attendanceRecords, studentNames, classSchedule, input);
+        }
+        scanner.close();
         getAttendanceRecords(attendanceRecords, studentNames, classSchedule);
+        
 
         int size = countDayOccurancesInMonth(classSchedule);
 
@@ -768,19 +812,19 @@ public class Program {
             //     System.err.println("IllegalArgument");
             //     System.exit(-1);
             // }
-            T1[numClasses] = dayTime;
+            classScheduleTemp[numClasses] = dayTime;
             numClasses++;
         }
-        size = 0;
-        size = myProgram.getClassSchedule(classScheduleTemp, null, 0);
+        // size = 0;
+        // size = myProgram.getClassSchedule(classScheduleTemp, null, 0);
 
-        int[] classSchedule = new int[size];
-        myProgram.getClassSchedule(classScheduleTemp, classSchedule, size);
+        // int[] classSchedule = new int[size];
+        // myProgram.getClassSchedule(classScheduleTemp, classSchedule, size);
 
         myProgram.insertionSort(classSchedule);
 
         int MAX_TIME_DAY_PAIR = myProgram.packIntegers(6, 31); // 223 // 6 * 31
-        int[][] attendanceRecords = new int[NBR_STUD][MAX_TIME_DAY_PAIR];
+        int[][] attendanceRecords = new int[NBR_STUD][6 * 31 /*MAX_TIME_DAY_PAIR*/];
         for (int i = 0; i < attendanceRecords.length; i++) {
             for (int j = 0; j < attendanceRecords[i].length; j++) {
                 attendanceRecords[i][j] = -1;
