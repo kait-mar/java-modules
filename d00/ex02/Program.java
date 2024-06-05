@@ -10,7 +10,7 @@ public class Program { // test two input numbers in the same line. fix arrow out
 
     public boolean isPrime(int n) {
         if (n == 2) {
-            return false;
+            return true;
         }
         int div = 0;
         for (int i = 2; i <= Math.sqrt(n); i++) {
