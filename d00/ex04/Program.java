@@ -69,10 +69,12 @@ public class Program {
         Program myProgram = new Program();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("-> ");
         String s = scanner.nextLine();
+        if (s.length() == 0)
+            return ;
         myProgram.analyseFrequency(s);
         myProgram.displayHistogram(s);
         scanner.close();
     }
 }
+

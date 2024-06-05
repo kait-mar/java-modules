@@ -1,5 +1,3 @@
-// package d00.ex02;
-
 import java.util.Scanner;
 
 public class Program { // test two input numbers in the same line. fix arrow output
@@ -38,7 +36,6 @@ public class Program { // test two input numbers in the same line. fix arrow out
         Program myProgram = new Program();
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.print("-> ");
             int query = scanner.nextInt();
             if (query == 42) {
                 System.out.println("Count of coffee-request : " + myProgram.number);

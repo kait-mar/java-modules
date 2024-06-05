@@ -38,7 +38,6 @@ public class Program {
         Program myProgram = new Program();
         Scanner scan = new Scanner(System.in);
         for (int i = 1; i <= 18; i++) { // test for over 18 and test if the entered grades are not 5
-            System.out.printf("-> ");
             String week = scan.nextLine();
             if (week.equals("42") == true)
                 break;
@@ -48,7 +47,6 @@ public class Program {
                 System.exit(-1);
             }
             int min = 9;
-            System.out.printf("-> ");
             for (int j = 0; j < 5; j++) {
                 int n = scan.nextInt();
                 // System.out.print("[" + n + "]");
