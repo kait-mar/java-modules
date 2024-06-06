@@ -1,9 +1,6 @@
-// package d01.ex00;
-
-import java.util.UUID;
 
 public class User {
-    private int     Identifier;
+    private int     id;
     private String  name;
     private int     balance = 0;
 
@@ -12,8 +9,9 @@ public class User {
     // }
     User(String _name){
         this.name = _name;
-        // this.Identifier = UUID.randomUUID();
+        this.id = UserIdsGenerator.getInstance().generateId();
     }
+
     User(String _name, int _balance){
         this.name = _name;
         if (_balance < 0){
@@ -21,6 +19,7 @@ public class User {
             return ;
         }
         this.balance = _balance;
+        this.id = UserIdsGenerator.getInstance().generateId();
         // this.Identifier = UUID.randomUUID();
     }
 
@@ -39,6 +38,6 @@ public class User {
     }
 
     public void print() {
-        System.out.println("I am " + this.name + ", I have " + this.balance);
+        System.out.println("I am " + this.name + " id : " + this.id + ", I have " + this.balance);
     }
 }
