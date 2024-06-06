@@ -26,7 +26,7 @@ public class Program {
     }
 
     public static void main(String[] args) {
-        number = 479598;
+        number = 479596;
         System.out.println(sum());
     }
 }

@@ -1,12 +1,9 @@
-// package d00.ex03;
-
 import java.util.Scanner;
 
 public class Program {
-    private int progress = 0;
+    private long progress = 0;
     private static String[] numbers_str = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
  
-    // private int reverse = 0;
     private static int toInt(String input) {
         for (int i = 0; i < 10; i++) {
             if (numbers_str[i].equals(input))
@@ -34,14 +31,12 @@ public class Program {
     }
 
     public void reverse() {
-        int m = 0;
-        System.out.println("progress before reverse " + this.progress);
+        long m = 0;
         while (this.progress != 0) {
             m = m * 10 + (this.progress % 10);
             this.progress /= 10;
         }
         this.progress = m;
-        System.out.println("progress after reverse " + this.progress);
     }
 
     public void printProgress() {
@@ -49,7 +44,7 @@ public class Program {
         String line = "";
         while (this.progress != 0) {
             line += "Week " + i + " ";
-            int res = this.progress % 10;
+            long res = this.progress % 10;
             this.progress /= 10;
             for (int j = 0; j < res; j++)
                 line += "=";
@@ -62,9 +57,8 @@ public class Program {
     public static void main(String args[]) {
         Program myProgram = new Program();
         Scanner scan = new Scanner(System.in);
-        for (int i = 1; i <= 18; i++) { // test for over 18 and test if the entered grades are not 5
+        for (int i = 1; i <= 18; i++) {
             String week = scan.nextLine();
-            // System.out.println("week [" + week);
             if (week.equals("42") == true)
                 break;
             if (week.length() == 0 || week.equals("Week " + i) == false) {
@@ -75,40 +69,77 @@ public class Program {
             int min = 9;
             int j;
             String grades = scan.nextLine();
-            // System.out.println("[" + grades + "] " + grades.length());
             if (check_grades(grades) == false){
-                System.out.println("IllegalArgument3");
+                System.out.println("IllegalArgument");
                 scan.close(); // TO VERIFY LATER
                 System.exit(-1);
             }
             Scanner grades_scanner = new Scanner(grades);
-            // grades_scanner.useDelimiter(" ");
             for (j = 0; j < 5; j++) {
-                // int n = scan.nextInt();
                 String num = grades_scanner.next();
-                // System.out.print("num [" + num + "]");
                 int n = toInt(num);
                 if (n <= 0 || n > 9) {
-                    System.out.println("IllegalArgument222");
+                    System.out.println("IllegalArgument");
                     scan.close(); // TO VERIFY LATER
+                    grades_scanner.close();
                     System.exit(-1);
                 }
                 min = myProgram.min(min, n);
             }
-            // scan.nextLine(); // consume the next line left in buffer
-            // System.out.print("[" + j + "]");
-            // String grades = = scan.nextLine();
             if (myProgram.progress == 0)
                 myProgram.progress = min;
             else
                 myProgram.progress = myProgram.progress * 10 + min;
-            // myProgram.len++;
-            // System.out.println("min => " + min);
-
+            grades_scanner.close();
         }
-        // System.out.println(myProgram.progress);
         myProgram.reverse();
         myProgram.printProgress();
         scan.close();
     }
 }
+/** 1st example  */
+// Week 1
+// 5 6 7 8 9
+// Week 2
+// 5 6 7 8 9
+// Week 3
+// 5 6 7 8 9
+// Week 4
+// 5 6 7 8 9
+// Week 5
+// 5 6 7 8 9
+// Week 6
+// 5 6 7 8 9
+// Week 7
+// 5 6 7 8 9
+// Week 8
+// 5 6 7 8 9
+// Week 9
+// 5 6 7 8 9
+// Week 10
+// 5 6 7 8 9
+// Week 11
+// 5 6 7 8 9
+// Week 12
+// 5 6 7 8 9
+// Week 13
+// 5 6 7 8 9
+// Week 14
+// 5 6 7 8 9
+// Week 15
+// 5 6 7 8 9
+// Week 16
+// 5 6 7 8 9
+// Week 17
+// 5 6 7 8 9
+
+/* 2d example  */
+// Week 1
+// 4 5 2 4 2
+// Week 2
+// 7 7 7 7 6
+// Week 3
+// 4 3 4 9 8
+// Week 4
+// 9 9 4 6 7
+
