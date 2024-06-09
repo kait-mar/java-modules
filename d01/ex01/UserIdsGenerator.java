@@ -1,3 +1,4 @@
+package ex01;
 
 public class UserIdsGenerator {
     private int _id = 0;

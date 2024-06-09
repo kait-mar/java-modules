@@ -1,6 +1,6 @@
-package ex02;
+package ex03;
 
-import ex01.User;
+import ex02.UserNotFoundException;
 
 public class UsersArrayList implements UsersList{
 

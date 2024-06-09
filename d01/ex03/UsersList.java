@@ -1,5 +1,4 @@
-package ex02;
-import ex01.User;
+package ex03;
 
 public interface UsersList {
 

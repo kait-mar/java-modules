@@ -1,4 +1,3 @@
-// package d01.ex00;
 
 import java.util.UUID;
 

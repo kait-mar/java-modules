@@ -1,18 +1,22 @@
+package ex02;
+import ex01.User;
+
 public class Program {
 
     public static void  main(String[] args) {
-        User user1 = new User("kait", 90);
-        User user2 = new User("mar", 20);
-        User user3 = new User("sso", 230);
+        try {
+            UsersArrayList usersList = new UsersArrayList();
 
-        // user2.setBalance(-10);
-        user1.print();
-        user2.print();
-        user3.print();
-        // System.out.println("**************");
-        // UserIdsGenerator gen1 = UserIdsGenerator.getInstance();
-        // UserIdsGenerator gen2 = UserIdsGenerator.getInstance();
-        // System.out.println(gen1._id);
-        // System.out.println(gen2._id);
+            for (int i = 0; i < 10; i++) {
+                usersList.addUser(new User("Person_" + i, i));
+            }
+            User temp = usersList.retrievUserById(7);
+            temp.print();
+            temp = usersList.retrievUserById(25);
+            temp.print();
+            System.out.println("finished with no errors");
+        } catch (RuntimeException e) {
+            System.err.println(e);
+        }
     }
 }
