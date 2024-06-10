@@ -1,12 +1,13 @@
 package ex04;
 
+import ex02.Category;
 import ex03.Transaction;
+import ex03.TransactionsLinkedList;
 import ex03.User;
 import ex03.UsersArrayList;
-import ex03.category;
 
 public class TransactionsService {
-        private UsersArrayList users;
+    private UsersArrayList users;
 
     // Adding a user
     // • Retrieving a user’s balance
@@ -28,32 +29,64 @@ public class TransactionsService {
         users.addUser(user);
     }
 
-    public long retrieveUserBalance(int id) {
+    public int retrieveUserBalance(int id) {
+        
         return users.retrievUserById(id).getBalance();
     }
 
-    public void createTransaction(int senderId, int recipientId, long amount) {
+    public void createTransaction(int senderId, int recipientId, int amount) {
         User sender = users.retrievUserById(senderId);
         User recipient = users.retrievUserById(recipientId);
-        sender.addTransaction(new Transaction(
+        // System.out.println("sender.getBalance() " + sender.getBalance() + " amount " + amount);
+        if (sender.getBalance() < amount)
+            throw new IllegalTransactionException(senderId);
+        String uuid = sender.addTransaction(new Transaction(
             sender,
             recipient,
-            category.CREDIT,
-            amount
+            Category.CREDIT,
+            -amount
         ));
         recipient.addTransaction(new Transaction(
             sender,
             recipient,
-            category.DEBIT,
-            -amount
+            Category.DEBIT,
+            amount,
+            uuid
         ));
     }
     
     public Transaction[] retrieveUserTransactions(int id) {
-        users.retrievUserById(id).getTransactions().toArray();
+        return users.retrievUserById(id).getTransactions().toArray();
     }
 
-    public void removeuserTransaction(int id, String uuid) {
-        users.retrievUserById(id).getTransactions().remove(uuid);
+    public Transaction removeuserTransaction(int id, String uuid) {
+        return users.retrievUserById(id).getTransactions().remove(uuid);
+    }
+
+    public Transaction[]    checkTransactionsValidity() {
+        TransactionsLinkedList   unpairedTransactions = new TransactionsLinkedList(); //temporary size allocation
+    
+        for (int i = 0; i < users.getListSize(); i ++) {
+            User user = users.retrievUserByIndex(i);
+            TransactionsLinkedList transactions = user.getTransactions();
+            
+            Transaction temp = transactions.getHead();
+            while (temp != null) {
+                if (temp.getCategory().equals(Category.CREDIT) 
+                    && temp.getRecipient().getTransactions().getTransactionById(temp.getUuid()) == null) {
+                        unpairedTransactions.add(temp);
+                }
+                else if (temp.getCategory().equals(Category.DEBIT) 
+                && temp.getSender().getTransactions().getTransactionById(temp.getUuid()) == null) {
+                    unpairedTransactions.add(temp);
+                }
+                temp = temp.getNext();
+            }
+        }
+        return unpairedTransactions.toArray();
+    }
+
+    public User findUser(int id) {
+        return users.retrievUserById(id);
     }
 }

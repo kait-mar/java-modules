@@ -5,15 +5,7 @@ import ex01.UserIdsGenerator;
 public class User {
     private int     id;
     private String  name;
-    private int     balance = 0;
-
-    // public static void main(String[] args) {
-    //     System.out.println("hello");
-    // }
-    public User(String _name){
-        this.name = _name;
-        this.id = UserIdsGenerator.getInstance().generateId();
-    }
+    private int     balance;
 
     public User(String _name, int _balance){
         this.name = _name;
@@ -23,8 +15,9 @@ public class User {
         }
         this.balance = _balance;
         this.id = UserIdsGenerator.getInstance().generateId();
-        // this.Identifier = UUID.randomUUID();
     }
+
+    public int getId() { return id; }
 
     public String getName() {return this.name; }
 
@@ -44,7 +37,4 @@ public class User {
         System.out.println("I am " + this.name + " id : " + this.id + ", I have " + this.balance);
     }
 
-    public int getId() {
-        return id;
-    }
 }

@@ -1,7 +1,7 @@
 package ex01;
 
 public class UserIdsGenerator {
-    private int _id = 0;
+    private int _id = 1;
     private static UserIdsGenerator instance = null;
 
     public static int generateId(){

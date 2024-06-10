@@ -1,8 +1,8 @@
 package ex03;
+import ex02.Category;
 
 public class Program { // how about the bidirectional linked list
     public static void main(String[] args) {
-        try{
             UsersArrayList  usersList = new UsersArrayList();
             // TransactionsLinkedList transactionsList = new TransactionsLinkedList();
 
@@ -15,8 +15,8 @@ public class Program { // how about the bidirectional linked list
                 Transaction tr = new Transaction(
                     sender,
                     reciepent,
-                    i < 5 ? category.CREDIT : category.DEBIT,
-                    i < 5 ? i : -i
+                    i < 5 ? Category.CREDIT : Category.DEBIT,
+                    i < 5 ? -(i + 10) : i + 10
                 );
                 // transactionsList.add(tr);
                 sender.addTransaction(tr);
@@ -29,10 +29,5 @@ public class Program { // how about the bidirectional linked list
                 System.out.println("-------");
             }
             
-
-
-        } catch(RuntimeException e) {
-            System.err.println(e);
-        }
     }
 }

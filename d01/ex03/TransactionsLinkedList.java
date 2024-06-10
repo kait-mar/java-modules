@@ -12,23 +12,20 @@ public class TransactionsLinkedList implements TransactionsList {
             size++;
             return ;
         }
-        // Transaction temp = head;
-        // while (temp.getNext() != null) {
-        //     temp = temp.getNext();
-        // }
         tail.setNext(new Transaction(_transaction));
         tail = tail.getNext();
         size++;
     }
 
-    public void remove(String _uuid) {
+    public Transaction remove(String _uuid) {
         Transaction temp = head;
 
-        while (temp.getNext() != null) {
+        while (temp != null && temp.getNext() != null) {
             if (temp.getNext().getUuid().equals(_uuid)) {
+                Transaction ret = temp.getNext();
                 temp.setNext(temp.getNext().getNext());
                 size--;
-                return ;
+                return ret;
             }
             temp = temp.getNext();
         }
@@ -47,9 +44,23 @@ public class TransactionsLinkedList implements TransactionsList {
         return (array);
     }
 
+    public Transaction getTransactionById(String uuid) {
+        Transaction temp = head;
+
+        while (temp != null) {
+            if (temp.getUuid().equals(uuid)) {
+                return temp;
+            }
+            temp = temp.getNext();
+        }
+        return null;
+    }
+
     public Transaction  getHead() {
         return head;
     }
+
+    public int      getSize() { return this.size; }
 
     public void print() {
         Transaction temp = head;

@@ -4,8 +4,13 @@ import ex02.UserNotFoundException;
 
 public class UsersArrayList implements UsersList{
 
-    private User[] users = new User[10];
-    private int size = 0;
+    private User[] users;
+    private int size;
+
+    public  UsersArrayList() {
+        this.users = new User[10];
+        this.size = 0;
+    }
 
     public void addUser(User user) {
         if (this.size >= users.length) {
@@ -17,9 +22,9 @@ public class UsersArrayList implements UsersList{
     }
 
     public User retrievUserById(int id) throws UserNotFoundException{
-        for (User _user: users) {
-            if (id == _user.getId())
-                return _user;
+        for (int i = 0; i < size; i++) {
+            if (id == users[i].getId())
+                return users[i];
         }
         throw new UserNotFoundException(id);
     }
@@ -30,7 +35,7 @@ public class UsersArrayList implements UsersList{
         // throw new UserNotFoundException(-1);
     }
 
-    public int  userListSize() {
+    public int  getListSize() {
         return size ;
     }
 

@@ -8,7 +8,7 @@ public class UsersArrayList implements UsersList{
     private int size = 0;
 
     public void addUser(User user) {
-        if (this.size >= users.length) {
+        if (this.size == users.length) {
             User[] temp = new User[size + size / 2];
             System.arraycopy(user, 0, temp, 0, size);
             users = temp;
@@ -17,20 +17,18 @@ public class UsersArrayList implements UsersList{
     }
 
     public User retrievUserById(int id) throws UserNotFoundException{
-        for (User _user: users) {
-            if (id == _user.getId())
-                return _user;
+        for (int i = 0; i < size; i++) {
+            if (id == users[i].getId())
+                return users[i];
         }
         throw new UserNotFoundException(id);
     }
 
     public User retrievUserByIndex(int index) {
-        // if (index < size && users[index] != null)
             return users[index];
-        // throw new UserNotFoundException(-1);
     }
 
-    public int  userListSize() {
+    public int  getListSize() {
         return size ;
     }
 
