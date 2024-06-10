@@ -20,6 +20,11 @@ public class TransactionsLinkedList implements TransactionsList {
     public Transaction remove(String _uuid) {
         Transaction temp = head;
 
+        if (head.getUuid().equals(_uuid)) {
+            this.head = this.head.getNext();
+            size--;
+            return temp;
+        }
         while (temp != null && temp.getNext() != null) {
             if (temp.getNext().getUuid().equals(_uuid)) {
                 Transaction ret = temp.getNext();

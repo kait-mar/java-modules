@@ -50,7 +50,7 @@ public class Menu {
                     break ;
                 command(item);
             } catch(Exception e) {
-                System.err.println("Error: " + e.getMessage());
+                System.err.println((e.getMessage().equals("Illegal argument") ? "" : "Error IllegalArgument: ") + e.getMessage());
                 System.out.println("---------------------------------------------------------");
             }
         }
@@ -151,8 +151,8 @@ public class Menu {
                     + "(id = " + tr[i].getRecipient().getId() + ") "
                     + tr[i].getAmount() + " with id = " + tr[i].getUuid();
             else
-                out = "From " + tr[i].getRecipient().getName()
-                + "(id = " + tr[i].getRecipient().getId() + ") +"
+                out = "From " + tr[i].getSender().getName()
+                + "(id = " + tr[i].getSender().getId() + ") +"
                 + tr[i].getAmount() + " with id = " + tr[i].getUuid();
             System.out.println(out);
         }
@@ -204,13 +204,13 @@ public class Menu {
             if (unpairedTransfers[i].getSender().getTransactions().getTransactionById(unpairedTransfers[i].getUuid()) != null) {
                 out = unpairedTransfers[i].getSender().getName() + "(id = " + unpairedTransfers[i].getSender().getId()
                     + ") has an unacknowledged transfer id = " + unpairedTransfers[i].getUuid()
-                    + "To " + unpairedTransfers[i].getRecipient().getName() + "(id = " + unpairedTransfers[i].getRecipient().getId()
+                    + " To " + unpairedTransfers[i].getRecipient().getName() + "(id = " + unpairedTransfers[i].getRecipient().getId()
                     + ") for " + unpairedTransfers[i].getAmount();
             }
             else {
                 out = unpairedTransfers[i].getRecipient().getName() + "(id = " + unpairedTransfers[i].getSender().getId()
                     + ") has an unacknowledged transfer id = " + unpairedTransfers[i].getUuid()
-                    + "From " + unpairedTransfers[i].getSender().getName() + "(id = " + unpairedTransfers[i].getSender().getId()
+                    + " From " + unpairedTransfers[i].getSender().getName() + "(id = " + unpairedTransfers[i].getSender().getId()
                     + ") for " + unpairedTransfers[i].getAmount();
             }
             System.out.println(out);

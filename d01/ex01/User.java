@@ -1,7 +1,5 @@
 package ex01;
 
-import ex01.UserIdsGenerator;
-
 public class User {
     private int     id;
     private String  name;

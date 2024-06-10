@@ -11,9 +11,9 @@ public class Program {
             System.err.println("IllegalArgument");
             return ;
         }
-        if (args.length == 0)
-            menu = new Menu(Mode.PROD);
-        else
+        // if (args.length == 0)
+        //     menu = new Menu(Mode.PROD);
+        // else
             menu = new Menu(Mode.DEV);
         menu.lunch();
     }

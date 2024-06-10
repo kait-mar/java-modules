@@ -13,7 +13,7 @@ public class Transaction {
     private int        amount;
     private Category    category;
 
-    Transaction(User _reciepient, User _sender, Category _category, int _amount) {
+    Transaction(User _sender , User _reciepient, Category _category, int _amount) {
         if (_reciepient == null || _sender == null) {
             System.err.println("null: invalid users");
             return;

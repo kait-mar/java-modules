@@ -6,7 +6,7 @@ public class Program {
     public static void  main(String[] args) {
         UsersArrayList usersList = new UsersArrayList();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i < 10; i++) {
             usersList.addUser(new User("Person_" + i, i));
         }
         User temp = usersList.retrievUserById(7);
