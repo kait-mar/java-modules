@@ -1,0 +1,27 @@
+GIF,47 49 46 38 39 61
+PNG,89 50 4E 47 0D 0A 1A 0A
+JPEG,FF D8 FF
+PDF,25 50 44 46
+SVG,3C 3F 78 6D 6C 20
+DOC,D0 CF 11 E0 A1 B1 1A E1
+GIF, 47 49 46 38 37 61
+TIFF,49 49 2A 00
+WEBP,52 49 46 46
+ZIP,50 4B 03 04
+ICO,00 00 01 00
+TIFF,4D 4D 00 2A
+
+
+/home/kait/Desktop/files/gif.gif
+/home/kait/Desktop/files/png.png
+/home/kait/Desktop/files/ico.ico
+/home/kait/Desktop/files/jpeg.jpeg
+/home/kait/Desktop/files/pdf.pdf
+/home/kait/Desktop/files/svg.svg
+/home/kait/Desktop/files/mp3.mp3
+/home/kait/Desktop/files/mp4.mp4
+/home/kait/Desktop/files/doc.doc
+/home/kait/Desktop/files/webp.webp
+/home/kait/Desktop/files/zip.zip
+/home/kait/Desktop/files/tiff.tiff
+/home/kait/Desktop/java-modules/d02/ex00/signatures.txt
